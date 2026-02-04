@@ -1,501 +1,495 @@
+
+
+Nâng cấp
+
+Chia sẻ
+viết một game html5 chỉ 1 file html loại pixel space shooter có tính điểm nâng cấp sức mạnh,màn chơi vô hạn
+Lite
+Chào bạn! Tôi sẽ tạo ngay một trò chơi Pixel Space Shooter dạng HTML5 tích hợp đầy đủ các tính năng như tính điểm, nâng cấp sức mạnh và màn chơi vô hạn trong duy nhất một tệp tin. Đợi tôi một lát nhé!
+Đang phát triển trò chơi Pixel Space Shooter trong một tệp HTML duy nhất, gồm tính năng tính điểm, nâng cấp và màn chơi vô hạn. Sẽ hoàn thành sớm.
+
+Đã hoàn thành viết mã trò chơi Pixel Space Shooter trong tệp HTML duy nhất, kiểm tra và xác nhận tồn tại thành công. Sẽ tiếp tục kiểm thử và hoàn thiện.
+
+Lite
+Tôi đã hoàn thành trò chơi Pixel Space Shooter theo yêu cầu của bạn. Đây là một tệp HTML duy nhất tích hợp đầy đủ các tính năng:
+Các tính năng chính:
+Đồ họa Pixel Art: Sử dụng Canvas API để tạo phong cách retro.
+Hệ thống Nâng cấp (Upgrade): Bạn có thể thu thập Scrap từ kẻ địch để nâng cấp:
+Speed: Tăng tốc độ di chuyển của phi thuyền.
+Fire Rate: Tăng tốc độ bắn đạn.
+Multi-shot: Nâng cấp lên bắn 2 tia hoặc 3 tia đạn cùng lúc.
+Màn chơi vô hạn: Kẻ địch sẽ xuất hiện nhanh hơn và mạnh hơn khi bạn đạt điểm cao hơn.
+Hệ thống điểm và cấp độ: Theo dõi Score, Level, Lives và Scrap ngay trên màn hình.
+Cách điều khiển:
+Di chuyển: Phím mũi tên hoặc WASD.
+Bắn: Phím Space (Dấu cách).
+Nâng cấp nhanh: Nhấn phím 1, 2, hoặc 3 khi có đủ Scrap.
+Bạn chỉ cần tải tệp đính kèm về và mở bằng bất kỳ trình duyệt web nào (Chrome, Firefox, Edge...) để bắt đầu chơi!
+pixel_space_shooter.html
+Mã · 13.98 KB
+Xem tất cả tệp trong nhiệm vụ này
+Nhiệm vụ đã hoàn thành
+Kết quả này như thế nào?
+Gợi ý theo dõi
+
+
+
+pixel_space_shooter.html
 <!DOCTYPE html>
 <html lang="vi">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kế Hoạch Học Tập Trong Tuần</title>
+    <title>Pixel Space Shooter - Infinite</title>
     <style>
-        * {
+        body {
             margin: 0;
             padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            min-height: 100vh;
-            padding: 20px;
-        }
-
-        .container {
-            max-width: 1000px;
-            margin: 0 auto;
-            background: white;
-            border-radius: 15px;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
-            padding: 30px;
-        }
-
-        header {
-            text-align: center;
-            margin-bottom: 30px;
-            border-bottom: 3px solid #667eea;
-            padding-bottom: 20px;
-        }
-
-        h1 {
-            color: #333;
-            font-size: 2.5em;
-            margin-bottom: 10px;
-        }
-
-        .subtitle {
-            color: #666;
-            font-size: 1.1em;
-        }
-
-        .input-section {
-            background: #f8f9fa;
-            padding: 20px;
-            border-radius: 10px;
-            margin-bottom: 30px;
-        }
-
-        .input-group {
+            background-color: #000;
+            color: #fff;
+            font-family: 'Courier New', Courier, monospace;
             display: flex;
-            gap: 10px;
-            margin-bottom: 15px;
-            flex-wrap: wrap;
-        }
-
-        .input-group input,
-        .input-group select,
-        .input-group textarea {
-            padding: 12px;
-            border: 2px solid #ddd;
-            border-radius: 8px;
-            font-size: 1em;
-            font-family: inherit;
-        }
-
-        .input-group input:focus,
-        .input-group select:focus,
-        .input-group textarea:focus {
-            outline: none;
-            border-color: #667eea;
-            box-shadow: 0 0 5px rgba(102, 126, 234, 0.3);
-        }
-
-        .input-group input[type="text"],
-        .input-group input[type="time"] {
-            flex: 1;
-            min-width: 150px;
-        }
-
-        .input-group select {
-            min-width: 120px;
-        }
-
-        .input-group textarea {
-            width: 100%;
-            min-height: 60px;
-            resize: vertical;
-        }
-
-        button {
-            padding: 12px 25px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            border: none;
-            border-radius: 8px;
-            font-size: 1em;
-            cursor: pointer;
-            transition: transform 0.2s, box-shadow 0.2s;
-            font-weight: 600;
-        }
-
-        button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
-        }
-
-        button:active {
-            transform: translateY(0);
-        }
-
-        .schedule-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 20px;
-            margin-bottom: 30px;
-        }
-
-        .day-card {
-            background: white;
-            border: 2px solid #e0e0e0;
-            border-radius: 10px;
-            padding: 20px;
-            transition: all 0.3s ease;
-        }
-
-        .day-card:hover {
-            border-color: #667eea;
-            box-shadow: 0 5px 20px rgba(102, 126, 234, 0.2);
-        }
-
-        .day-header {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 12px;
-            border-radius: 8px;
-            margin: -20px -20px 15px -20px;
-            text-align: center;
-            font-weight: 600;
-            font-size: 1.2em;
-        }
-
-        .task-item {
-            background: #f8f9fa;
-            padding: 12px;
-            border-radius: 8px;
-            margin-bottom: 10px;
-            border-left: 4px solid #667eea;
-            display: flex;
-            justify-content: space-between;
+            justify-content: center;
             align-items: center;
+            height: 100vh;
+            overflow: hidden;
+        }
+        #game-container {
+            position: relative;
+            box-shadow: 0 0 20px rgba(0, 255, 255, 0.2);
+            border: 4px solid #333;
+        }
+        canvas {
+            display: block;
+            background-color: #050510;
+            image-rendering: pixelated;
+        }
+        #ui {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            pointer-events: none;
+            width: calc(100% - 20px);
+        }
+        .stat {
+            font-size: 18px;
+            margin-bottom: 5px;
+            text-shadow: 2px 2px #000;
+        }
+        #overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            z-index: 10;
+        }
+        button {
+            background: #00ffff;
+            border: none;
+            padding: 10px 20px;
+            font-family: 'Courier New', Courier, monospace;
+            font-weight: bold;
+            font-size: 20px;
+            cursor: pointer;
+            margin-top: 20px;
+            transition: transform 0.1s;
+        }
+        button:hover {
+            background: #ffffff;
+            transform: scale(1.1);
+        }
+        .controls-hint {
+            margin-top: 30px;
+            font-size: 14px;
+            color: #aaa;
+        }
+        #upgrade-menu {
+            display: none;
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(0, 40, 40, 0.9);
+            padding: 15px;
+            border: 2px solid #00ffff;
+            flex-direction: row;
             gap: 10px;
         }
-
-        .task-item.completed {
-            opacity: 0.6;
-            background: #e8f5e9;
-            border-left-color: #4caf50;
+        .upgrade-btn {
+            background: #222;
+            color: #0ff;
+            border: 1px solid #0ff;
+            padding: 5px 10px;
+            font-size: 12px;
+            cursor: pointer;
         }
-
-        .task-item.completed .task-text {
-            text-decoration: line-through;
-            color: #999;
-        }
-
-        .task-text {
-            flex: 1;
-        }
-
-        .task-time {
-            font-size: 0.9em;
-            color: #666;
-            min-width: 60px;
-        }
-
-        .task-priority {
-            display: inline-block;
-            padding: 4px 8px;
-            border-radius: 4px;
-            font-size: 0.8em;
-            font-weight: 600;
-            margin-bottom: 5px;
-        }
-
-        .priority-high {
-            background: #ffebee;
-            color: #c62828;
-        }
-
-        .priority-medium {
-            background: #fff3e0;
-            color: #e65100;
-        }
-
-        .priority-low {
-            background: #e8f5e9;
-            color: #2e7d32;
-        }
-
-        .task-actions {
-            display: flex;
-            gap: 5px;
-        }
-
-        .task-actions button {
-            padding: 6px 10px;
-            font-size: 0.9em;
-            min-width: auto;
-        }
-
-        .delete-btn {
-            background: #f44336;
-        }
-
-        .delete-btn:hover {
-            background: #d32f2f;
-        }
-
-        .complete-btn {
-            background: #4caf50;
-        }
-
-        .complete-btn:hover {
-            background: #388e3c;
-        }
-
-        .empty-state {
-            text-align: center;
-            padding: 40px 20px;
-            color: #999;
-        }
-
-        .empty-state svg {
-            width: 80px;
-            height: 80px;
-            margin-bottom: 20px;
-            opacity: 0.5;
-        }
-
-        .stats {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-            gap: 15px;
-            margin-bottom: 30px;
-        }
-
-        .stat-card {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 20px;
-            border-radius: 10px;
-            text-align: center;
-        }
-
-        .stat-number {
-            font-size: 2em;
-            font-weight: 700;
-            margin-bottom: 5px;
-        }
-
-        .stat-label {
-            font-size: 0.9em;
-            opacity: 0.9;
-        }
-
-        .clear-all-btn {
-            background: #f44336;
-            width: 100%;
-            margin-top: 20px;
-        }
-
-        @media (max-width: 768px) {
-            .container {
-                padding: 20px;
-            }
-
-            h1 {
-                font-size: 1.8em;
-            }
-
-            .schedule-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .input-group {
-                flex-direction: column;
-            }
-
-            .input-group input,
-            .input-group select,
-            .input-group textarea {
-                width: 100%;
-            }
+        .upgrade-btn:disabled {
+            color: #555;
+            border-color: #555;
+            cursor: not-allowed;
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <header>
-            <h1>📚 Kế Hoạch Học Tập Trong Tuần</h1>
-            <p class="subtitle">Quản lý và theo dõi lịch học tập của bạn</p>
-        </header>
 
-        <div class="stats">
-            <div class="stat-card">
-                <div class="stat-number" id="totalTasks">0</div>
-                <div class="stat-label">Tổng Nhiệm Vụ</div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-number" id="completedTasks">0</div>
-                <div class="stat-label">Hoàn Thành</div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-number" id="remainingTasks">0</div>
-                <div class="stat-label">Còn Lại</div>
-            </div>
+<div id="game-container">
+    <canvas id="gameCanvas"></canvas>
+    <div id="ui">
+        <div class="stat">SCORE: <span id="score-val">0</span></div>
+        <div class="stat">LEVEL: <span id="level-val">1</span></div>
+        <div class="stat">LIVES: <span id="lives-val">3</span></div>
+        <div class="stat">SCRAP: <span id="scrap-val">0</span></div>
+    </div>
+    
+    <div id="overlay">
+        <h1 id="title">PIXEL SPACE SHOOTER</h1>
+        <p id="msg">Protect the galaxy from the pixel invasion!</p>
+        <button id="start-btn">START GAME</button>
+        <div class="controls-hint">
+            WASD / ARROWS to Move<br>
+            SPACE to Shoot<br>
+            1, 2, 3 to Upgrade (when you have Scrap)
         </div>
-
-        <div class="input-section">
-            <h2 style="margin-bottom: 15px; color: #333;">Thêm Nhiệm Vụ Mới</h2>
-            <div class="input-group">
-                <input type="text" id="taskInput" placeholder="Nhập nội dung học tập..." maxlength="100">
-                <select id="daySelect">
-                    <option value="">Chọn ngày</option>
-                    <option value="Thứ Hai">Thứ Hai</option>
-                    <option value="Thứ Ba">Thứ Ba</option>
-                    <option value="Thứ Tư">Thứ Tư</option>
-                    <option value="Thứ Năm">Thứ Năm</option>
-                    <option value="Thứ Sáu">Thứ Sáu</option>
-                    <option value="Thứ Bảy">Thứ Bảy</option>
-                    <option value="Chủ Nhật">Chủ Nhật</option>
-                </select>
-                <input type="time" id="timeInput">
-                <select id="prioritySelect">
-                    <option value="low">Ưu Tiên Thấp</option>
-                    <option value="medium" selected>Ưu Tiên Trung Bình</option>
-                    <option value="high">Ưu Tiên Cao</option>
-                </select>
-            </div>
-            <div class="input-group">
-                <textarea id="noteInput" placeholder="Ghi chú thêm (tùy chọn)..."></textarea>
-            </div>
-            <button onclick="addTask()">➕ Thêm Nhiệm Vụ</button>
-        </div>
-
-        <div class="schedule-grid" id="scheduleGrid">
-            <!-- Các ngày sẽ được tạo động -->
-        </div>
-
-        <button class="clear-all-btn" onclick="clearAllTasks()">🗑️ Xóa Tất Cả Nhiệm Vụ</button>
     </div>
 
-    <script>
-        const days = ['Thứ Hai', 'Thứ Ba', 'Thứ Tư', 'Thứ Năm', 'Thứ Sáu', 'Thứ Bảy', 'Chủ Nhật'];
-        let tasks = JSON.parse(localStorage.getItem('weeklyTasks')) || {};
+    <div id="upgrade-menu">
+        <button class="upgrade-btn" id="upg-speed" title="Cost: 10 Scrap">1: SPEED (10)</button>
+        <button class="upgrade-btn" id="upg-fire" title="Cost: 15 Scrap">2: FIRE RATE (15)</button>
+        <button class="upgrade-btn" id="upg-multi" title="Cost: 25 Scrap">3: MULTI-SHOT (25)</button>
+    </div>
+</div>
 
-        // Khởi tạo cấu trúc dữ liệu cho các ngày
-        days.forEach(day => {
-            if (!tasks[day]) {
-                tasks[day] = [];
+<script>
+    const canvas = document.getElementById('gameCanvas');
+    const ctx = canvas.getContext('2d');
+    const scoreEl = document.getElementById('score-val');
+    const levelEl = document.getElementById('level-val');
+    const livesEl = document.getElementById('lives-val');
+    const scrapEl = document.getElementById('scrap-val');
+    const overlay = document.getElementById('overlay');
+    const startBtn = document.getElementById('start-btn');
+    const upgradeMenu = document.getElementById('upgrade-menu');
+
+    // Game Config
+    const WIDTH = 400;
+    const HEIGHT = 600;
+    canvas.width = WIDTH;
+    canvas.height = HEIGHT;
+
+    let gameActive = false;
+    let score = 0;
+    let level = 1;
+    let scrap = 0;
+    let keys = {};
+
+    // Game Objects
+    let player;
+    let bullets = [];
+    let enemies = [];
+    let particles = [];
+    let powerUps = [];
+
+    class Player {
+        constructor() {
+            this.w = 30;
+            this.h = 30;
+            this.x = WIDTH / 2 - this.w / 2;
+            this.y = HEIGHT - 60;
+            this.speed = 4;
+            this.lives = 3;
+            this.fireRate = 400; // ms
+            this.lastFire = 0;
+            this.multiShot = 1;
+            this.color = '#00ffff';
+        }
+
+        draw() {
+            ctx.fillStyle = this.color;
+            // Simple Pixel Ship Shape
+            ctx.fillRect(this.x + 10, this.y, 10, 10);
+            ctx.fillRect(this.x, this.y + 10, 30, 10);
+            ctx.fillRect(this.x, this.y + 20, 10, 10);
+            ctx.fillRect(this.x + 20, this.y + 20, 10, 10);
+            
+            // Engine glow
+            ctx.fillStyle = Math.random() > 0.5 ? '#ffaa00' : '#ff4400';
+            ctx.fillRect(this.x + 12, this.y + 30, 6, 4);
+        }
+
+        update() {
+            if (keys['ArrowLeft'] || keys['a']) this.x -= this.speed;
+            if (keys['ArrowRight'] || keys['d']) this.x += this.speed;
+            if (keys['ArrowUp'] || keys['w']) this.y -= this.speed;
+            if (keys['ArrowDown'] || keys['s']) this.y += this.speed;
+
+            // Boundaries
+            this.x = Math.max(0, Math.min(WIDTH - this.w, this.x));
+            this.y = Math.max(0, Math.min(HEIGHT - this.h, this.y));
+
+            if (keys[' '] && Date.now() - this.lastFire > this.fireRate) {
+                this.shoot();
+                this.lastFire = Date.now();
             }
-        });
-
-        function saveTasks() {
-            localStorage.setItem('weeklyTasks', JSON.stringify(tasks));
-            updateStats();
-            renderSchedule();
         }
 
-        function addTask() {
-            const taskInput = document.getElementById('taskInput');
-            const daySelect = document.getElementById('daySelect');
-            const timeInput = document.getElementById('timeInput');
-            const prioritySelect = document.getElementById('prioritySelect');
-            const noteInput = document.getElementById('noteInput');
-
-            if (!taskInput.value.trim() || !daySelect.value) {
-                alert('Vui lòng nhập nội dung và chọn ngày!');
-                return;
-            }
-
-            const task = {
-                id: Date.now(),
-                text: taskInput.value.trim(),
-                time: timeInput.value || '09:00',
-                priority: prioritySelect.value,
-                note: noteInput.value.trim(),
-                completed: false
-            };
-
-            tasks[daySelect.value].push(task);
-            saveTasks();
-
-            // Xóa input
-            taskInput.value = '';
-            timeInput.value = '';
-            prioritySelect.value = 'medium';
-            noteInput.value = '';
-            taskInput.focus();
-        }
-
-        function deleteTask(day, taskId) {
-            tasks[day] = tasks[day].filter(task => task.id !== taskId);
-            saveTasks();
-        }
-
-        function toggleComplete(day, taskId) {
-            const task = tasks[day].find(t => t.id === taskId);
-            if (task) {
-                task.completed = !task.completed;
-                saveTasks();
+        shoot() {
+            if (this.multiShot === 1) {
+                bullets.push(new Bullet(this.x + this.w / 2 - 2, this.y, 0));
+            } else if (this.multiShot === 2) {
+                bullets.push(new Bullet(this.x + 5, this.y, 0));
+                bullets.push(new Bullet(this.x + this.w - 10, this.y, 0));
+            } else {
+                bullets.push(new Bullet(this.x + this.w / 2 - 2, this.y, 0));
+                bullets.push(new Bullet(this.x, this.y + 10, -0.5));
+                bullets.push(new Bullet(this.x + this.w - 4, this.y + 10, 0.5));
             }
         }
+    }
 
-        function updateStats() {
-            let total = 0;
-            let completed = 0;
+    class Bullet {
+        constructor(x, y, vx) {
+            this.x = x;
+            this.y = y;
+            this.vx = vx;
+            this.vy = -7;
+            this.w = 4;
+            this.h = 10;
+        }
+        draw() {
+            ctx.fillStyle = '#ffff00';
+            ctx.fillRect(this.x, this.y, this.w, this.h);
+        }
+        update() {
+            this.x += this.vx;
+            this.y += this.vy;
+        }
+    }
 
-            days.forEach(day => {
-                total += tasks[day].length;
-                completed += tasks[day].filter(t => t.completed).length;
-            });
+    class Enemy {
+        constructor(type) {
+            this.w = 30;
+            this.h = 30;
+            this.x = Math.random() * (WIDTH - this.w);
+            this.y = -40;
+            this.type = type; // 1: normal, 2: fast, 3: tank
+            this.hp = type === 3 ? 3 : 1;
+            this.speed = (Math.random() * 1 + 1) + (level * 0.2);
+            if (type === 2) this.speed *= 2;
+            this.color = type === 1 ? '#ff0055' : (type === 2 ? '#ffaa00' : '#aa00ff');
+        }
+        draw() {
+            ctx.fillStyle = this.color;
+            if (this.type === 1) {
+                ctx.fillRect(this.x, this.y, 30, 20);
+                ctx.fillRect(this.x + 10, this.y + 20, 10, 10);
+            } else if (this.type === 2) {
+                ctx.fillRect(this.x + 10, this.y, 10, 30);
+                ctx.fillRect(this.x, this.y + 10, 30, 10);
+            } else {
+                ctx.fillRect(this.x, this.y, 30, 30);
+                ctx.fillStyle = '#000';
+                ctx.fillRect(this.x + 5, this.y + 5, 20, 20);
+                ctx.fillStyle = this.color;
+                ctx.fillRect(this.x + 10, this.y + 10, 10, 10);
+            }
+        }
+        update() {
+            this.y += this.speed;
+        }
+    }
 
-            document.getElementById('totalTasks').textContent = total;
-            document.getElementById('completedTasks').textContent = completed;
-            document.getElementById('remainingTasks').textContent = total - completed;
+    class Particle {
+        constructor(x, y, color) {
+            this.x = x;
+            this.y = y;
+            this.color = color;
+            this.vx = (Math.random() - 0.5) * 4;
+            this.vy = (Math.random() - 0.5) * 4;
+            this.life = 1.0;
+        }
+        draw() {
+            ctx.globalAlpha = this.life;
+            ctx.fillStyle = this.color;
+            ctx.fillRect(this.x, this.y, 3, 3);
+            ctx.globalAlpha = 1.0;
+        }
+        update() {
+            this.x += this.vx;
+            this.y += this.vy;
+            this.life -= 0.02;
+        }
+    }
+
+    function spawnEnemy() {
+        if (!gameActive) return;
+        let type = 1;
+        let rand = Math.random();
+        if (rand > 0.8) type = 2;
+        if (rand > 0.92) type = 3;
+        enemies.push(new Enemy(type));
+        
+        let nextSpawn = Math.max(300, 1500 - (level * 100));
+        setTimeout(spawnEnemy, nextSpawn);
+    }
+
+    function createExplosion(x, y, color) {
+        for (let i = 0; i < 10; i++) {
+            particles.push(new Particle(x, y, color));
+        }
+    }
+
+    function init() {
+        player = new Player();
+        bullets = [];
+        enemies = [];
+        particles = [];
+        score = 0;
+        level = 1;
+        scrap = 0;
+        updateUI();
+    }
+
+    function updateUI() {
+        scoreEl.innerText = score;
+        levelEl.innerText = level;
+        livesEl.innerText = player.lives;
+        scrapEl.innerText = scrap;
+        
+        document.getElementById('upg-speed').disabled = scrap < 10;
+        document.getElementById('upg-fire').disabled = scrap < 15;
+        document.getElementById('upg-multi').disabled = scrap < 25;
+    }
+
+    function handleUpgrades(id) {
+        if (id === '1' && scrap >= 10) {
+            player.speed += 0.5;
+            scrap -= 10;
+        } else if (id === '2' && scrap >= 15) {
+            player.fireRate = Math.max(100, player.fireRate - 50);
+            scrap -= 15;
+        } else if (id === '3' && scrap >= 25) {
+            player.multiShot = Math.min(3, player.multiShot + 1);
+            scrap -= 25;
+        }
+        updateUI();
+    }
+
+    function gameOver() {
+        gameActive = false;
+        overlay.style.display = 'flex';
+        upgradeMenu.style.display = 'none';
+        document.getElementById('title').innerText = 'GAME OVER';
+        document.getElementById('msg').innerText = `Final Score: ${score} | Level: ${level}`;
+        startBtn.innerText = 'TRY AGAIN';
+    }
+
+    function gameLoop() {
+        if (!gameActive) return;
+
+        ctx.clearRect(0, 0, WIDTH, HEIGHT);
+
+        // Background Stars
+        ctx.fillStyle = '#fff';
+        if (Math.random() > 0.9) ctx.fillRect(Math.random() * WIDTH, 0, 1, 1);
+
+        player.update();
+        player.draw();
+
+        // Bullets
+        for (let i = bullets.length - 1; i >= 0; i--) {
+            bullets[i].update();
+            bullets[i].draw();
+            if (bullets[i].y < -20) bullets.splice(i, 1);
         }
 
-        function renderSchedule() {
-            const grid = document.getElementById('scheduleGrid');
-            grid.innerHTML = '';
+        // Enemies
+        for (let i = enemies.length - 1; i >= 0; i--) {
+            let e = enemies[i];
+            e.update();
+            e.draw();
 
-            days.forEach(day => {
-                const dayCard = document.createElement('div');
-                dayCard.className = 'day-card';
+            // Collision with Player
+            if (e.x < player.x + player.w && e.x + e.w > player.x &&
+                e.y < player.y + player.h && e.y + e.h > player.y) {
+                createExplosion(player.x + 15, player.y + 15, '#00ffff');
+                createExplosion(e.x + 15, e.y + 15, e.color);
+                enemies.splice(i, 1);
+                player.lives--;
+                updateUI();
+                if (player.lives <= 0) gameOver();
+                continue;
+            }
 
-                let dayContent = `<div class="day-header">${day}</div>`;
-
-                if (tasks[day].length === 0) {
-                    dayContent += `<div class="empty-state">Không có nhiệm vụ</div>`;
-                } else {
-                    // Sắp xếp theo thời gian
-                    const sortedTasks = [...tasks[day]].sort((a, b) => a.time.localeCompare(b.time));
+            // Collision with Bullets
+            for (let j = bullets.length - 1; j >= 0; j--) {
+                let b = bullets[j];
+                if (b.x < e.x + e.w && b.x + b.w > e.x &&
+                    b.y < e.y + e.h && b.y + b.h > e.y) {
                     
-                    sortedTasks.forEach(task => {
-                        const priorityClass = `priority-${task.priority}`;
-                        const completedClass = task.completed ? 'completed' : '';
+                    e.hp--;
+                    bullets.splice(j, 1);
+                    
+                    if (e.hp <= 0) {
+                        createExplosion(e.x + 15, e.y + 15, e.color);
+                        enemies.splice(i, 1);
+                        score += e.type * 10;
+                        scrap += e.type;
                         
-                        dayContent += `
-                            <div class="task-item ${completedClass}">
-                                <div>
-                                    <div class="task-priority ${priorityClass}">
-                                        ${task.priority === 'high' ? '🔴 Cao' : task.priority === 'medium' ? '🟡 Trung Bình' : '🟢 Thấp'}
-                                    </div>
-                                    <div class="task-text">${task.text}</div>
-                                    ${task.note ? `<div style="font-size: 0.85em; color: #666; margin-top: 5px;">📝 ${task.note}</div>` : ''}
-                                </div>
-                                <div class="task-time">${task.time}</div>
-                                <div class="task-actions">
-                                    <button class="complete-btn" onclick="toggleComplete('${day}', ${task.id})">
-                                        ${task.completed ? '↩️' : '✓'}
-                                    </button>
-                                    <button class="delete-btn" onclick="deleteTask('${day}', ${task.id})">🗑️</button>
-                                </div>
-                            </div>
-                        `;
-                    });
+                        // Level Up Logic
+                        if (score > level * 500) {
+                            level++;
+                        }
+                        updateUI();
+                    }
+                    break;
                 }
+            }
 
-                dayCard.innerHTML = dayContent;
-                grid.appendChild(dayCard);
-            });
-        }
-
-        function clearAllTasks() {
-            if (confirm('Bạn có chắc chắn muốn xóa tất cả nhiệm vụ không?')) {
-                days.forEach(day => {
-                    tasks[day] = [];
-                });
-                saveTasks();
+            if (e.y > HEIGHT) {
+                enemies.splice(i, 1);
             }
         }
 
-        // Xử lý phím Enter
-        document.getElementById('taskInput').addEventListener('keypress', function(e) {
-            if (e.key === 'Enter') {
-                addTask();
-            }
-        });
+        // Particles
+        for (let i = particles.length - 1; i >= 0; i--) {
+            particles[i].update();
+            particles[i].draw();
+            if (particles[i].life <= 0) particles.splice(i, 1);
+        }
 
-        // Khởi tạo
-        renderSchedule();
-        updateStats();
-    </script>
+        requestAnimationFrame(gameLoop);
+    }
+
+    // Controls
+    window.addEventListener('keydown', e => {
+        keys[e.key] = true;
+        if (gameActive && ['1', '2', '3'].includes(e.key)) {
+            handleUpgrades(e.key);
+        }
+    });
+    window.addEventListener('keyup', e => keys[e.key] = false);
+
+    startBtn.addEventListener('click', () => {
+        init();
+        gameActive = true;
+        overlay.style.display = 'none';
+        upgradeMenu.style.display = 'flex';
+        spawnEnemy();
+        gameLoop();
+    });
+
+    // Upgrade buttons
+    document.getElementById('upg-speed').addEventListener('click', () => handleUpgrades('1'));
+    document.getElementById('upg-fire').addEventListener('click', () => handleUpgrades('2'));
+    document.getElementById('upg-multi').addEventListener('click', () => handleUpgrades('3'));
+
+</script>
 </body>
 </html>

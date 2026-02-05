@@ -339,7 +339,7 @@
             player.fireRate = Math.max(100, player.fireRate - 50);
             scrap -= 15;
         } else if (id === '3' && scrap >= 25) {
-            player.multiShot = Math.min(3, player.multiShot + 1);
+            player.multiShot = Math.min(30, player.multiShot + 1);
             scrap -= 25;
         }
         updateUI();
